@@ -7,7 +7,7 @@
     pip install mujoco  
     
     pip install gymnasium[mujoco]
-
+完成后就可以进行基本的运行了
 注：
 - 可以根据自己需要安装 jupyter
 - 笔者使用的是 `pip install mujoco==3.4.0`
