@@ -4,7 +4,7 @@
 # 环境的搭建
 在 python3.10 或者 3.11 下进行
 
-pip install mujoco  
+    pip install mujoco  
     
     pip install gymnasium[mujoco]
 
