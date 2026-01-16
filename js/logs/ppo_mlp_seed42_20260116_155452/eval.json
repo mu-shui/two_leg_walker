@@ -1,0 +1,162 @@
+[
+  {
+    "step": 50000,
+    "eval_reward_mean": 86.15668764665512,
+    "eval_reward_std": 97.11459599460426,
+    "eval_len_mean": 215.2,
+    "eval_speed_mean": -0.6834517615722107,
+    "eval_speed_std": 0.15687609997125904
+  },
+  {
+    "step": 100000,
+    "eval_reward_mean": 209.24918287950914,
+    "eval_reward_std": 116.3281195776458,
+    "eval_len_mean": 308.8,
+    "eval_speed_mean": -0.36271508902300414,
+    "eval_speed_std": 0.34272420801882264
+  },
+  {
+    "step": 150000,
+    "eval_reward_mean": 205.41569635435607,
+    "eval_reward_std": 94.8067043491438,
+    "eval_len_mean": 155.6,
+    "eval_speed_mean": 0.4341522394874901,
+    "eval_speed_std": 0.63653800002137
+  },
+  {
+    "step": 200000,
+    "eval_reward_mean": 97.94548806457776,
+    "eval_reward_std": 58.064526403759636,
+    "eval_len_mean": 177.0,
+    "eval_speed_mean": -0.37465378804813626,
+    "eval_speed_std": 0.522489916869817
+  },
+  {
+    "step": 250000,
+    "eval_reward_mean": 267.7229581196485,
+    "eval_reward_std": 5.764131311251044,
+    "eval_len_mean": 152.8,
+    "eval_speed_mean": 0.7530315378666469,
+    "eval_speed_std": 0.023383565459020556
+  },
+  {
+    "step": 300000,
+    "eval_reward_mean": 245.35409162601076,
+    "eval_reward_std": 23.44826792967859,
+    "eval_len_mean": 136.8,
+    "eval_speed_mean": 0.7967336360143011,
+    "eval_speed_std": 0.0958611007943235
+  },
+  {
+    "step": 350000,
+    "eval_reward_mean": 100.5832381760179,
+    "eval_reward_std": 72.54156226487827,
+    "eval_len_mean": 152.6,
+    "eval_speed_mean": -0.14645423223267623,
+    "eval_speed_std": 0.7682618926435132
+  },
+  {
+    "step": 400000,
+    "eval_reward_mean": 180.2563524616827,
+    "eval_reward_std": 12.32742116127535,
+    "eval_len_mean": 106.0,
+    "eval_speed_mean": 0.7003916437119269,
+    "eval_speed_std": 0.04395181182065596
+  },
+  {
+    "step": 450000,
+    "eval_reward_mean": 126.96746937997871,
+    "eval_reward_std": 7.512509092595527,
+    "eval_len_mean": 85.8,
+    "eval_speed_mean": 0.4862899425200946,
+    "eval_speed_std": 0.10704302238605085
+  },
+  {
+    "step": 500000,
+    "eval_reward_mean": 210.82323596149755,
+    "eval_reward_std": 49.590949508941456,
+    "eval_len_mean": 188.6,
+    "eval_speed_mean": 0.22302796090357485,
+    "eval_speed_std": 0.32380050252190457
+  },
+  {
+    "step": 550000,
+    "eval_reward_mean": 181.40920295561256,
+    "eval_reward_std": 47.85994132990646,
+    "eval_len_mean": 183.8,
+    "eval_speed_mean": 0.2946766764106206,
+    "eval_speed_std": 0.49130698915065907
+  },
+  {
+    "step": 600000,
+    "eval_reward_mean": 326.8881980186162,
+    "eval_reward_std": 127.69904464397707,
+    "eval_len_mean": 226.0,
+    "eval_speed_mean": 0.5424512359171505,
+    "eval_speed_std": 0.2109908841921564
+  },
+  {
+    "step": 650000,
+    "eval_reward_mean": 153.8710615782638,
+    "eval_reward_std": 16.497152376604582,
+    "eval_len_mean": 164.2,
+    "eval_speed_mean": 0.21013843127380225,
+    "eval_speed_std": 0.56046352146042
+  },
+  {
+    "step": 700000,
+    "eval_reward_mean": 303.5620715930877,
+    "eval_reward_std": 102.93435566482876,
+    "eval_len_mean": 202.2,
+    "eval_speed_mean": 0.5852307450962912,
+    "eval_speed_std": 0.1985450343853899
+  },
+  {
+    "step": 750000,
+    "eval_reward_mean": 341.75924104672424,
+    "eval_reward_std": 82.96285792484481,
+    "eval_len_mean": 278.2,
+    "eval_speed_mean": 0.2728374901451075,
+    "eval_speed_std": 0.3624045510830358
+  },
+  {
+    "step": 800000,
+    "eval_reward_mean": 197.79595784951366,
+    "eval_reward_std": 65.6496946664158,
+    "eval_len_mean": 143.4,
+    "eval_speed_mean": 0.40157039806351785,
+    "eval_speed_std": 0.4128192040017655
+  },
+  {
+    "step": 850000,
+    "eval_reward_mean": 152.12011514581894,
+    "eval_reward_std": 21.301402571733234,
+    "eval_len_mean": 87.2,
+    "eval_speed_mean": 0.791471380936799,
+    "eval_speed_std": 0.3181584557474095
+  },
+  {
+    "step": 900000,
+    "eval_reward_mean": 112.2817574150346,
+    "eval_reward_std": 1.7529936487396485,
+    "eval_len_mean": 87.0,
+    "eval_speed_mean": 0.29382115856233987,
+    "eval_speed_std": 0.025046323194948622
+  },
+  {
+    "step": 950000,
+    "eval_reward_mean": 232.90892667644567,
+    "eval_reward_std": 125.29996123745067,
+    "eval_len_mean": 144.4,
+    "eval_speed_mean": 0.8043009429488345,
+    "eval_speed_std": 0.2691144117045588
+  },
+  {
+    "step": 1000000,
+    "eval_reward_mean": 226.78805141931701,
+    "eval_reward_std": 47.116992501775975,
+    "eval_len_mean": 130.0,
+    "eval_speed_mean": 0.8081728635717169,
+    "eval_speed_std": 0.19409991598704052
+  }
+]

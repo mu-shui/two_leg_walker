@@ -1,0 +1,14 @@
+{
+  "videos": [
+    "demo-episode-0.mp4",
+    "demo-episode-1.mp4",
+    "demo-episode-2.mp4",
+    "demo-episode-3.mp4",
+    "demo-episode-4.mp4"
+  ],
+  "video_reward_mean": 174.509550179972,
+  "video_reward_std": 35.43920917900185,
+  "video_len_mean": 94.8,
+  "video_speed_mean": 0.8532754917652771,
+  "video_speed_std": 0.10455699001042702
+}

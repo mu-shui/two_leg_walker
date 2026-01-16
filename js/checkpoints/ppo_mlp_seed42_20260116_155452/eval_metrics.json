@@ -1,0 +1,12 @@
+{
+  "episodes": 20,
+  "mean_reward": 209.70043560952058,
+  "std_reward": 83.31454834746846,
+  "mean_len": 146.65,
+  "mean_speed": 0.7787194186085099,
+  "std_speed": 0.2954419559155274,
+  "model": "checkpoints\\ppo_mlp_seed42_20260116_155452\\final.pt",
+  "env_id": "Walker2d-v4",
+  "random_friction": true,
+  "max_episode_steps": null
+}
