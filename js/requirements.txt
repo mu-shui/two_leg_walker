@@ -1,0 +1,8 @@
+numpy==2.4.1
+torch==2.9.1
+gymnasium[mujoco]==1.2.3
+mujoco==3.4.0
+tqdm==4.67.1
+tensorboard==2.20.0
+matplotlib==3.10.8
+rich==14.2.0

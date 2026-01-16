@@ -1,0 +1,43 @@
+# 自检
+.\.venv\Scripts\python.exe scripts\mujoco_smoke_test.py
+.\.venv\Scripts\python.exe scripts\mujoco_smoke_test.py --render human --steps 200
+.\.venv\Scripts\python.exe scripts\mujoco_smoke_test.py --render human --steps 200 --ignore-done
+
+# 超短演示（<=20k 步，最快视觉检查）
+.\.venv\Scripts\python.exe src\train.py --critic-arch mlp --seed 42 --total-steps 20000 --start-steps 1000 --noise-sigma 0.05 --actor-lr 0.001 --critic-lr 0.001 --visualize-after --record-video
+
+# 短跑演示（无随机摩擦）
+.\.venv\Scripts\python.exe src\train.py --critic-arch mlp --seed 42 --total-steps 200000 --start-steps 1000 --noise-sigma 0.05 --visualize-after --record-video
+
+# 官方要求训练（>=1e6 步，随机摩擦）
+.\.venv\Scripts\python.exe src\train.py --critic-arch mlp --seed 42 --total-steps 1000000 --random-friction --visualize-after --record-video
+
+# 可选 TD3 训练（MLP，随机摩擦）
+.\.venv\Scripts\python.exe src\train.py --algo td3 --critic-arch mlp --seed 42 --total-steps 1000000 --random-friction --visualize-after --record-video
+
+# TD3 一体命令（训练 + 评估 + 绘图 + 视频）
+.\.venv\Scripts\python.exe src\train.py --algo td3 --critic-arch mlp --seed 42 --total-steps 1000000 --random-friction --visualize-after --record-video; $run=(Get-ChildItem logs -Directory | Sort-Object LastWriteTime | Select-Object -Last 1).Name; .\.venv\Scripts\python.exe src\eval.py --model "checkpoints\$run" --episodes 20 --seed 123; .\.venv\Scripts\python.exe src\plot.py --logdir "logs\$run"
+
+# 评估已训练模型（将 ddpg_mlp_xxx 替换为真实 run_id）
+.\.venv\Scripts\python.exe src\eval.py --model checkpoints\ddpg_mlp_xxx --episodes 20 --seed 123
+
+# 绘制奖励曲线（将 ddpg_mlp_xxx 替换为真实 run_id）
+.\.venv\Scripts\python.exe src\plot.py --logdir logs\ddpg_mlp_xxx
+
+# 长回合评估 + 录视频 + 窗口渲染（TD3 示例）
+.\.venv\Scripts\python.exe src\eval.py --model checkpoints\td3_mlp_seed42_20260116_001048 --episodes 1 --seed 123 --max-episode-steps 2000 --record-video --render
+
+# TD3 长视频（使用训练评估 seed=10042，更容易超过 8 秒）
+.\.venv\Scripts\python.exe src\eval.py --model checkpoints\td3_mlp_seed42_20260116_001048 --episodes 1 --seed 10042 --max-episode-steps 2000 --record-video --render
+
+# 可选 PPO 训练（仅 MLP，含稳定性调参）
+.\.venv\Scripts\python.exe src\train.py --algo ppo --critic-arch mlp --seed 42 --total-steps 1000000 --random-friction --ppo-actor-lr 3e-4 --ppo-critic-lr 0.001 --ppo-target-kl 0.01 --ppo-clip-vloss --visualize-after --record-video
+
+# PPO 一体命令（训练 + 评估 + 绘图 + 视频，含稳定性调参）
+.\.venv\Scripts\python.exe src\train.py --algo ppo --critic-arch mlp --seed 42 --total-steps 1000000 --random-friction --ppo-actor-lr 3e-4 --ppo-critic-lr 0.001 --ppo-target-kl 0.01 --ppo-clip-vloss --visualize-after --record-video; $run=(Get-ChildItem logs -Directory | Sort-Object LastWriteTime | Select-Object -Last 1).Name; .\.venv\Scripts\python.exe src\eval.py --model "checkpoints\$run" --episodes 20 --seed 123; .\.venv\Scripts\python.exe src\plot.py --logdir "logs\$run"
+
+# PPO 鲁棒优先（随机摩擦更强、更稳目标 8s，训练 1e6）
+.\.venv\Scripts\python.exe src\train.py --algo ppo --critic-arch mlp --seed 42 --total-steps 1000000 --random-friction --eval-random-friction --ppo-steps 4096 --ppo-epochs 5 --ppo-minibatch 128 --entropy-coef 0.01 --ppo-actor-lr 3e-4 --ppo-critic-lr 0.001 --ppo-target-kl 0.01 --ppo-clip-vloss --visualize-after --record-video --video-episodes 5
+
+# PPO 鲁棒优先一体命令（训练 + 评估 + 绘图 + 视频）
+.\.venv\Scripts\python.exe src\train.py --algo ppo --critic-arch mlp --seed 42 --total-steps 1000000 --random-friction --eval-random-friction --ppo-steps 4096 --ppo-epochs 5 --ppo-minibatch 128 --entropy-coef 0.01 --ppo-actor-lr 3e-4 --ppo-critic-lr 0.001 --ppo-target-kl 0.01 --ppo-clip-vloss --visualize-after --record-video --video-episodes 5; $run=(Get-ChildItem logs -Directory | Sort-Object LastWriteTime | Select-Object -Last 1).Name; .\.venv\Scripts\python.exe src\eval.py --model "checkpoints\$run" --episodes 20 --seed 123 --random-friction; .\.venv\Scripts\python.exe src\plot.py --logdir "logs\$run"

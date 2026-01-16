@@ -1,0 +1,80 @@
+# status.md
+
+## 已完成
+- 将代码库重写为**自定义 DDPG 实现**（代码包含 MLP/LSTM，但要求重点是 MLP）。
+- 新增 MLP actor/critic、经验回放缓冲区、日志器，并更新训练/评估/绘图脚本。
+- 更新 README，描述自定义 DDPG 工作流。
+- 从 `requirements.txt` 移除 SB3 依赖。
+- 完成 README 步骤 1（环境搭建）：使用 `scripts\setup_env.ps1` + `.venv`。
+- 完成 README 步骤 2（MuJoCo 自检）：`mujoco_smoke_test.py`（含/不含渲染、ignore-done）与 `src/check_env.py`。
+- 完成 README 步骤 3（实验设计）：固定 MLP 方案，指标与消融记录在 `result.md`。
+- 完成 README 步骤 4（训练/评估脚本检查）：日志齐全（`config.json`、`metrics.csv`、可选 `eval.json`、checkpoints）。
+- 在 venv 安装 CUDA 版 PyTorch 相关包（torch 已存在，新增 torchvision cu126）。
+- 检查 venv CUDA 可用性（CUDA 可用；RTX 3050 Laptop GPU）。
+- 2026-01-15 16:33 (D:\OneDrive\A1-PPT\ml\2foot)：更新 `run_commands.txt`，MLP 训练命令使用 `.venv`（未执行）。
+- 2026-01-15 16:48 (D:\OneDrive\A1-PPT\ml\2foot)：更新 `run_commands.txt`，绘图指向同一训练命令生成的 run 目录。
+- 2026-01-15 16:52 (D:\OneDrive\A1-PPT\ml\2foot)：`src/train.py` 增加 `--plot-after`，`run_commands.txt` 简化为单条训练+绘图命令。
+- 2026-01-15 16:58 (D:\OneDrive\A1-PPT\ml\2foot)：文档中 `VENV_PATH` 替换为直接 `.\\.venv`。
+- 2026-01-15 17:06 (D:\OneDrive\A1-PPT\ml\2foot)：`src/train.py` 增加 `--visualize-after`，训练后自动保存图并显示 MuJoCo；更新文档/命令。
+- 2026-01-15 17:13 (D:\OneDrive\A1-PPT\ml\2foot)：增加 `--record-video` 保存训练后演示视频；更新文档/命令。
+- 2026-01-15 17:19 (D:\OneDrive\A1-PPT\ml\2foot)：在 `.venv` 安装 MoviePy + imageio-ffmpeg 以支持视频保存。
+- 2026-01-15 17:27 (D:\OneDrive\A1-PPT\ml\2foot)：重写 `README.md`，层级更清晰并加入结果/答辩要求与 TODO 清单。
+- 2026-01-15 17:33 (D:\OneDrive\A1-PPT\ml\2foot)：再次重写 `README.md`，纳入 Word 文件的全部要求。
+- 2026-01-15 19:47 (D:\OneDrive\A1-PPT\ml\2foot)：检查 MLP 训练/评估参数与日志，确认记录了回合长度；指出速度未显式记录。
+- 2026-01-15 19:51 (D:\OneDrive\A1-PPT\ml\2foot)：在评估与训练评估/渲染/视频中增加速度（x_velocity）记录。
+- 2026-01-15 19:56 (D:\OneDrive\A1-PPT\ml\2foot)：查询基准超参与 Walker2d-v4 定义并对比。
+- 2026-01-15 20:04 (D:\OneDrive\A1-PPT\ml\2foot)：`run_commands.txt` 训练步数更新为 1,000,000（MLP+随机摩擦）。
+- 2026-01-15 20:08 (D:\OneDrive\A1-PPT\ml\2foot)：修复视频录制多出空文件的问题（`record_video()` 最后不再 reset）。
+- 2026-01-15 20:18 (D:\OneDrive\A1-PPT\ml\2foot)：`AGENTS.md` 增加可选短跑命令，并将全部命令写入 `run_commands.txt`。
+- 2026-01-15 20:23 (D:\OneDrive\A1-PPT\ml\2foot)：`set_seed()` 内设置 `CUBLAS_WORKSPACE_CONFIG`，无需 `$env` 即可满足确定性。
+- 2026-01-15 20:25 (D:\OneDrive\A1-PPT\ml\2foot)：新增 20k 步快速前进演示命令到 `run_commands.txt`。
+- 2026-01-15 20:26 (D:\OneDrive\A1-PPT\ml\2foot)：为 `AGENTS.md` 与 `run_commands.txt` 添加注释（自检/演示/正式训练/评估/绘图）。
+- 2026-01-15 23:47 (D:\OneDrive\A1-PPT\ml\2foot)：分析 1e6 运行（ddpg_mlp_seed42_20260115_203637）并汇总指标。
+- 2026-01-15 23:49 (D:\OneDrive\A1-PPT\ml\2foot)：在 `result.md` 新增“第一次 1e6 跑摔分析”。
+- 2026-01-15 23:54 (D:\OneDrive\A1-PPT\ml\2foot)：查询 Walker2d-v4 规格与鲁棒性基准并记录。
+- 2026-01-16 00:01 (D:\OneDrive\A1-PPT\ml\2foot)：增加 TD3 vs DDPG 背景说明（非实现）。
+- 2026-01-16 00:05 (D:\OneDrive\A1-PPT\ml\2foot)：新增 TD3 实现（双 Q、延迟更新、目标平滑），更新 `AGENTS.md` 和 `run_commands.txt`。
+- 2026-01-16 00:06 (D:\OneDrive\A1-PPT\ml\2foot)：`AGENTS.md` 范围更新为允许 DDPG/PPO/TD3（仅 MLP）。
+- 2026-01-16 00:07 (D:\OneDrive\A1-PPT\ml\2foot)：增加“训练必须与评估/绘图/视频保存一体化”的要求。
+- 2026-01-16 00:08 (D:\OneDrive\A1-PPT\ml\2foot)：新增 TD3 一体命令到 `run_commands.txt`。
+- 2026-01-16 10:12 (D:\OneDrive\A1-PPT\ml\2foot)：分析 TD3 运行（td3_mlp_seed42_20260116_001048）并记录指标。
+- 2026-01-16 10:17 (D:\OneDrive\A1-PPT\ml\2foot)：增加 DDPG vs TD3 对比与原因说明（报告可用）。
+- 2026-01-16 10:21 (D:\OneDrive\A1-PPT\ml\2foot)：训练/评估/渲染/视频支持 `--max-episode-steps`。
+- 2026-01-16 10:24 (D:\OneDrive\A1-PPT\ml\2foot)：`src/eval.py` 支持录视频（record-video + video-dir + video-episodes）。
+- 2026-01-16 10:25 (D:\OneDrive\A1-PPT\ml\2foot)：新增长回合评估+视频命令。
+- 2026-01-16 10:29 (D:\OneDrive\A1-PPT\ml\2foot)：`src/eval.py` 支持保存 `eval_metrics.json` 并可同时渲染+录制；更新命令。
+- 2026-01-16 10:39 (D:\OneDrive\A1-PPT\ml\2foot)：记录 TD3 评估 2 秒摔倒案例分析。
+- 2026-01-16 10:41 (D:\OneDrive\A1-PPT\ml\2foot)：新增 TD3 长视频命令（seed 10042）。
+- 2026-01-16 10:56 (D:\OneDrive\A1-PPT\ml\2foot)：新增“前倾原因”报告说明。
+- 2026-01-16 11:08 (D:\OneDrive\A1-PPT\ml\2foot)：新增“经验回放与目标网络”报告说明。
+- 2026-01-16 11:16 (D:\OneDrive\A1-PPT\ml\2foot)：新增 PPO 训练命令（MLP）。
+- 2026-01-16 11:30 (D:\OneDrive\A1-PPT\ml\2foot)：实现 PPO（actor-critic、GAE、clip）并接入 `src/train.py`；更新 `AGENTS.md` 与 `run_commands.txt`。
+- 2026-01-16 11:32 (D:\OneDrive\A1-PPT\ml\2foot)：`src/eval.py` 支持 PPO checkpoint（高斯策略）。
+- 2026-01-16 11:36 (D:\OneDrive\A1-PPT\ml\2foot)：新增 PPO 一体命令。
+- 2026-01-16 11:36 (D:\OneDrive\A1-PPT\ml\2foot)：`AGENTS.md` 要求所有回答与报告必须中文。
+- 2026-01-16 11:42 (D:\OneDrive\A1-PPT\ml\2foot)：将此前英文文档内容全部改为中文（`AGENTS.md`、`run_commands.txt`、`status.md`、`result.md`、`README.md`）。
+- 2026-01-16 12:50 (D:\OneDrive\A1-PPT\ml\2foot)：使用 `src/eval.py` 为 PPO 1e6 训练结果补录长视频（5 回合、max_episode_steps=1500、随机摩擦），生成 `eval_metrics.json` 与新视频文件。
+- 2026-01-16 13:02 (D:\OneDrive\A1-PPT\ml\2foot)：基于三条日志（DDPG/PPO/TD3）统计最后 200 回合长度分布与 eval 结果，分析“2 秒摔倒”的原因。
+- 2026-01-16 13:20 (D:\OneDrive\A1-PPT\ml\2foot)：参考 PPO 公开超参与实现细节，调整 PPO：新增 PPO 专属学习率、target_kl 提前停止、value clipping，GAE λ 默认 0.97，并接入训练流程。
+- 2026-01-16 13:26 (D:\OneDrive\A1-PPT\ml\2foot)：更新 `run_commands.txt` 的 PPO 命令，加入稳定性调参参数。
+- 2026-01-16 13:35 (D:\OneDrive\A1-PPT\ml\2foot)：在 `run_commands.txt` 追加 PPO 鲁棒优先 1e6 训练命令（不覆盖原命令）。
+- 2026-01-16 13:36 (D:\OneDrive\A1-PPT\ml\2foot)：追加 PPO 鲁棒优先一体命令（训练+评估+绘图+视频）。
+- 2026-01-16 13:48 (D:\OneDrive\A1-PPT\ml\2foot)：定义合格/收敛宽松判据并统计三条实验收敛步数、最终奖励与方差，写入 `result.md`。
+- 2026-01-16 14:02 (D:\OneDrive\A1-PPT\ml\2foot)：新增 `scripts/compute_convergence.py`，可按阈值与连续次数自动统计收敛步数与方差。
+- 2026-01-16 14:12 (D:\OneDrive\A1-PPT\ml\2foot)：分析 PPO 鲁棒优先 1e6 结果（ppo_mlp_seed42_20260116_155452）并记录到 `result.md`。
+- 2026-01-16 16:55 (D:\OneDrive\A1-PPT\ml\2foot)：核对 logs 配置，确认 4 个 MLP run 均为 1,000,000 步 + 随机摩擦（DDPG/TD3/PPO）。
+- 2026-01-16 16:55 (D:\OneDrive\A1-PPT\ml\2foot)：对 logs 下所有 run_id 执行 20 回合评估（seed=123），结果写入 `result.md`，并更新各 `checkpoints/<run_id>/eval_metrics.json`。
+- 2026-01-16 20:15 (D:\OneDrive\A1-PPT\ml\2foot)：补写 PPT/报告“实验目标”，并在 `README.md` 的 PPT TODO 中标记完成。
+- 2026-01-16 20:16 (D:\OneDrive\A1-PPT\ml\2foot)：补写 PPT/报告“任务与环境”，并在 `README.md` 的 PPT TODO 中标记完成。
+- 2026-01-16 20:17 (D:\OneDrive\A1-PPT\ml\2foot)：细化“任务与环境”说明，补充观测/动作/奖励/终止与步长细节。
+- 2026-01-16 20:17 (D:\OneDrive\A1-PPT\ml\2foot)：补充“本实验代码对应与操作要点”，说明训练/评估/随机摩擦/可视化与日志路径。
+- 2026-01-16 20:17 (D:\OneDrive\A1-PPT\ml\2foot)：在 `report.md` 添加 Walker2d 环境参考资料链接（Gymnasium 文档）。
+- 2026-01-16 20:25 (D:\OneDrive\A1-PPT\ml\2foot)：将“本实验代码对应”内容并入“任务与环境”，补充动作/观测/奖励与终止的代码用法说明，并移除独立参考链接小节。
+- 2026-01-16 20:28 (D:\OneDrive\A1-PPT\ml\2foot)：补充“观测空间 17 维具体顺序”到报告的“任务与环境”。
+- 2026-01-16 20:29 (D:\OneDrive\A1-PPT\ml\2foot)：将观测空间 17 维细节整理成表格并插入报告。
+
+## 待完成
+- 报告与答辩材料整理（图表、对比结论、问题与改进建议）。
+
+## 备注
+- 之前的短跑自检仅用于验证流程，**不是最终实验结果**。
